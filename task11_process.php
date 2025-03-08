@@ -13,7 +13,7 @@ if ($_POST["try"] < 0 || $_POST["try"] > 20) {
     exit;
 }
 
-
+//Проверяем меньше /больше / равно
 if ($_POST["try"] > $_SESSION['hidden']) {
     $_SESSION["attempts"]--;
     $_SESSION['error'] = 'Загаданное число меньше.';
@@ -24,8 +24,9 @@ if ($_POST["try"] > $_SESSION['hidden']) {
     $_SESSION['success'] = 'Вы угадали! Загаданное число '.$_SESSION['hidden'].'. Сыграем еще разок!';
 }
 
-if ( $_SESSION['attempts']==0) {
-    $_SESSION['error'] = 'Попытки закончились. Загаданное число '.$_SESSION['hidden'].'.';
+//проверяем количество попыток
+if ($_SESSION['attempts'] == 0 && isset($_SESSION['error'])) {
+    $_SESSION['error'] = 'Попытки закончились. Загаданное число ' . $_SESSION['hidden'] . '.';
 }
 
 
